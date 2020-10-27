@@ -127,7 +127,7 @@ class Dice
     ellipse(myX + 30, myY + 30, 7 , 7);
     ellipse(myX + 20, myY + 20, 7 , 7);
   }
-    if(heads == 6) {
+  if(heads == 6) {
     fill(0);
     ellipse(myX + 9, myY + 10, 7 , 7);
     ellipse(myX + 9, myY + 30, 7 , 7);

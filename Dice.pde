@@ -1,5 +1,6 @@
 Dice aDice, bDice, cDice, dDice, eDice, fDice, gDice, hDice, iDice, jDice;
-int numberCounter;
+int numberCounter; 
+color aColor;
 
 
 void setup()
@@ -34,6 +35,7 @@ void draw()
 }
 void mousePressed()
 {
+  aColor = color (random(255), random(255), random(255));
   numberCounter = 0;
   aDice.toss();
   bDice.toss();
@@ -51,7 +53,7 @@ void mousePressed()
 }
 class Dice
 {
-  int heads;
+  int face;
   int myX, myY;
   Dice (int x_, int y_)
   {
@@ -62,64 +64,53 @@ class Dice
   void toss()
   {
     
-    if(Math.random() < 0.166) { 
-      heads = 1;}
-    if((Math.random() < 0.333) && (Math.random() > 0.166)) {
-      heads = 2; }
-    if((Math.random() < 0.5) && (Math.random() > 0.333)) {
-      heads = 3; }
-    if((Math.random() < 0.666) && (Math.random() > 0.5)) {
-      heads = 4; }
-    if((Math.random() < 0.833) && (Math.random() > 0.666)) {
-      heads = 5; }
-    if((Math.random() < 1) && (Math.random() > 0.833)) {
-      heads = 6; }
+      face = (int) (Math.random()*6)+1;
       
-       if (heads == 1) { numberCounter++;} 
-    if (heads == 2) { numberCounter+= 2;}
-    if (heads == 3) { numberCounter+= 3;}
-    if (heads == 4) { numberCounter+= 4;}
-    if (heads == 5) { numberCounter+= 5;}
-    if (heads == 6) { numberCounter+= 6;}
+       if (face == 1) { numberCounter++;} 
+    if (face == 2) { numberCounter+= 2;}
+    if (face == 3) { numberCounter+= 3;}
+    if (face == 4) { numberCounter+= 4;}
+    if (face == 5) { numberCounter+= 5;}
+    if (face == 6) { numberCounter+= 6;}
      
         
     
   }
   void show()
   {
-    fill(255,255,255);
+    fill(aColor);
     square(myX,myY,40);
     fill(255,255,255);
     text("CLICK TO TOSS",275,60);
     text("TOTAL NUMBER OF DOTS", 275, 200);
    
   {
-    text(numberCounter- 1, 275,225); 
+    text(numberCounter, 275,225); 
   }
   {   
-    if(heads == 1) {
+    if(face == 1) {
       fill(0);
       ellipse(myX + 20 , myY + 20 , 7, 7);
     }
-    if(heads == 2) {
+    if(face == 2) {
       fill(0);
       ellipse(myX + 10, myY + 20, 7, 7);
       ellipse(myX + 30, myY + 20, 7, 7);
     }
-    if(heads == 3) {
+    if(face == 3) {
       fill(0);
       ellipse(myX + 10, myY + 30, 7, 7);
       ellipse(myX +20, myY + 10, 7 , 7);
       ellipse(myX + 30, myY + 30, 7, 7);
     }
-   if(heads == 4) {
+   if(face == 4) {
      fill(0);
      ellipse(myX + 10, myY + 10, 7 , 7);
      ellipse(myX + 10, myY + 30, 7 , 7);
      ellipse(myX + 30, myY + 10, 7 , 7);
      ellipse(myX + 30, myY + 30, 7, 7);
   }
-  if(heads == 5) {
+  if(face == 5) {
     fill(0);
     ellipse(myX + 10, myY + 10, 7 , 7);
     ellipse(myX + 10, myY + 30, 7 , 7);
@@ -127,7 +118,7 @@ class Dice
     ellipse(myX + 30, myY + 30, 7 , 7);
     ellipse(myX + 20, myY + 20, 7 , 7);
   }
-  if(heads == 6) {
+    if(face == 6) {
     fill(0);
     ellipse(myX + 9, myY + 10, 7 , 7);
     ellipse(myX + 9, myY + 30, 7 , 7);
@@ -140,3 +131,4 @@ class Dice
 
   }
 }
+    
